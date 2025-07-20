@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pasterus</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --color1-hue: 265;
+      --color2-hue: 180;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      overflow: hidden;
+      font-family: 'Inter', sans-serif;
+      color: white;
+      background-color: #152735;
+      background-image:
+        radial-gradient(at 47% 33%, hsl(var(--color1-hue), 78%, 28%) 0, transparent 59%),
+        radial-gradient(at 82% 65%, hsl(var(--color2-hue), 65%, 31%) 0, transparent 55%);
+      background-attachment: fixed;
+      transition: background-image 0.15s ease;
+      position: relative;
+    }
+
+      .titlebar {
+        display: flex;
+        align-items: center;       /* vertikal zentriert */
+        gap: 12px;                 /* Abstand zwischen Icon und Text */
+        padding: 0 16px;           /* links/rechts Padding */
+        height: 48px;
+        background: rgba(21, 39, 53, 0.5);
+        backdrop-filter: blur(10px) saturate(200%);
+        -webkit-backdrop-filter: blur(10px) saturate(200%);
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        max-width: 960px;
+        margin: 16px auto 0 auto;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      .app-logo {
+        width: 32px;      /* Icon-Größe anpassen */
+        height: 32px;
+        object-fit: contain;
+      }
+
+      .titlebar h2 {
+        margin: 0;
+        font-weight: 600;
+        font-size: 1.00rem;
+        color: white;
+      }
+
+
+    .main {
+      height: calc(100vh - 64px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      z-index: 10;
+    }
+
+    .card {
+      backdrop-filter: blur(10px) saturate(200%);
+      -webkit-backdrop-filter: blur(10px) saturate(200%);
+      background-color: rgba(21, 39, 53, 0.8);
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.125);
+      padding: 3rem 2rem;
+      max-width: 700px;
+      width: 90%;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    }
+
+    .card h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .card p {
+      font-size: 1rem;
+      opacity: 0.85;
+      margin-bottom: 2rem;
+    }
+
+      .download-btn {
+            background-color: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(12px) saturate(180%);
+            -webkit-backdrop-filter: blur(12px) saturate(180%);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 0.85rem 2rem;
+            font-size: 1rem;
+            border-radius: 10px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+            user-select: none;
+          }
+
+          .download-btn:hover:not(.disabled) {
+            background-color: rgba(0, 0, 0, 0.85);
+            transform: scale(1.04);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+          }
+
+          .download-btn.disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            pointer-events: none;
+          }
+
+    
+  </style>
+</head>
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pasterus</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --color1-hue: 265;
+      --color2-hue: 180;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      overflow: hidden;
+      font-family: 'Inter', sans-serif;
+      color: white;
+      background-color: #152735;
+      background-image:
+        radial-gradient(at 47% 33%, hsl(var(--color1-hue), 78%, 28%) 0, transparent 59%),
+        radial-gradient(at 82% 65%, hsl(var(--color2-hue), 65%, 31%) 0, transparent 55%);
+      background-attachment: fixed;
+      transition: background-image 0.15s ease;
+      position: relative;
+    }
+
+    .titlebar {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 0 16px;
+      height: 48px;
+      background: rgba(21, 39, 53, 0.5);
+      backdrop-filter: blur(10px) saturate(200%);
+      -webkit-backdrop-filter: blur(10px) saturate(200%);
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      max-width: 960px;
+      margin: 16px auto 0 auto;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      position: relative;
+      z-index: 10;
+    }
+
+    .app-logo {
+      width: 32px;
+      height: 32px;
+      object-fit: contain;
+    }
+
+    .titlebar h2 {
+      margin: 0;
+      font-weight: 600;
+      font-size: 1.25rem;
+      color: white;
+    }
+
+    .main {
+      height: calc(100vh - 64px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      z-index: 10;
+      padding: 0 16px;
+    }
+
+    .card {
+      backdrop-filter: blur(10px) saturate(200%);
+      -webkit-backdrop-filter: blur(10px) saturate(200%);
+      background-color: rgba(21, 39, 53, 0.8);
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.125);
+      padding: 3rem 2rem;
+      max-width: 400px;
+      width: 90%;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    }
+
+    .card h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .card p {
+      font-size: 1rem;
+      opacity: 0.85;
+      margin-bottom: 2rem;
+    }
+
+    .download-btn {
+      background-color: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(12px) saturate(180%);
+      -webkit-backdrop-filter: blur(12px) saturate(180%);
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 0.85rem 2rem;
+      font-size: 1rem;
+      border-radius: 10px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+      user-select: none;
+    }
+
+    .download-btn:hover:not(.disabled) {
+      background-color: rgba(0, 0, 0, 0.85);
+      transform: scale(1.04);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .download-btn.disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
+    .card .app-logo {
+      width: 64px;
+      height: 64px;
+      margin-bottom: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="titlebar">
+    <img src="icon.png" class="app-logo" alt="App Icon" />
+    <h2>Pasterus</h2>
+  </div>
+
+  <div class="main">
+    <div class="card">
+      <img src="icon.png" class="app-logo" alt="App Icon" />
+      <h1>Clipboard Management with Pasterus</h1>
+      <p>Oops, did you overwrite something by mistake? With Pasterus you always have your clipboard course under control!</p>
+      <a href="#" class="download-btn disabled" id="downloadBtn" download>Loading Download-Link...</a>
+    </div>
+  </div>
+
+  <script>
+    let scrollAmount = 0;
+
+    window.addEventListener('wheel', (e) => {
+      scrollAmount += e.deltaY * 0.1;
+      scrollAmount = Math.max(0, Math.min(100, scrollAmount));
+    });
+
+    function animate(time = 0) {
+      const cycleDuration = 90000;
+      const progress = (time % cycleDuration) / cycleDuration;
+      const sinVal = Math.sin(progress * 2 * Math.PI);
+
+      const baseHue1 = 265;
+      const baseHue2 = 180;
+
+      const scrollHue1 = baseHue1 + (scrollAmount / 100) * 150;
+      const scrollHue2 = baseHue2 - (scrollAmount / 100) * 80;
+
+      const shimmerAmount = 5;
+
+      const finalHue1 = scrollHue1 + sinVal * shimmerAmount;
+      const finalHue2 = scrollHue2 + sinVal * shimmerAmount * 0.6;
+
+      document.documentElement.style.setProperty('--color1-hue', finalHue1);
+      document.documentElement.style.setProperty('--color2-hue', finalHue2);
+
+      requestAnimationFrame(animate);
+    }
+
+    requestAnimationFrame(animate);
+
+    async function fetchLatestReleaseDownload() {
+      const user = 'MexelRobi';
+      const repo = 'Pasterus';
+      const apiUrl = `https://api.github.com/repos/${user}/${repo}/releases/latest`;
+
+      try {
+        const response = await fetch(apiUrl);
+        if (!response.ok) throw new Error('Release nicht gefunden');
+
+        const data = await response.json();
+
+        if (!data.assets || data.assets.length === 0) {
+          disableButton("Kein Download verfügbar");
+          return;
+        }
+
+        // Optional: Filter auf bestimmte Dateitypen (z.B. nur .zip, .dmg)
+        // const asset = data.assets.find(a => a.name.endsWith('.zip')) || data.assets[0];
+        const asset = data.assets[0];
+
+        const downloadUrl = asset.browser_download_url;
+        const fileName = asset.name;
+
+        const btn = document.getElementById('downloadBtn');
+        btn.href = downloadUrl;
+        btn.textContent = `Download ${fileName}`;
+        btn.classList.remove('disabled');
+      } catch (error) {
+        console.error('Fehler beim Laden des Releases:', error);
+        disableButton("Download not available");
+      }
+    }
+
+    function disableButton(text) {
+      const btn = document.getElementById('downloadBtn');
+      btn.textContent = text;
+      btn.classList.add('disabled');
+      btn.href = '#';
+      btn.removeAttribute('download');
+    }
+
+    window.addEventListener('load', fetchLatestReleaseDownload);
+  </script>
+
+</body>
+</html>
