@@ -4,8 +4,25 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Pasterus</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  
   <style>
+      
+      @font-face {
+        font-family: 'Inter';
+        src: url('../fonts/InterVariable.ttf') format('truetype-variations');
+        font-weight: 100 900;
+        font-style: normal;
+      }
+
+      @font-face {
+        font-family: 'Inter';
+        src: url('../fonts/InterVariable-Italic.ttf') format('truetype-variations');
+        font-weight: 100 900;
+        font-style: italic;
+      }
+
+     
+      
     :root {
       --color1-hue: 265;
       --color2-hue: 180;
@@ -171,6 +188,9 @@
       <h1>Clipboard Management with Pasterus</h1>
       <p>Oops, did you overwrite something by mistake? With Pasterus you always have your clipboard course under control!</p>
       <a href="#" class="download-btn disabled" id="downloadBtn" download>Loading Download-Link...</a>
+      <p style="font-size: 0.7rem; color: rgba(255,255,255,0.8); margin-top: 1rem;">
+      This tool is provided without guarantee. The author assumes no liability for damages resulting from the use. Use is at your own risk.
+        </p>
     </div>
   </div>
 
